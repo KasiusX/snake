@@ -8,7 +8,7 @@ pygame.mixer.init()
 WIDTH, HEIGHT = 750,750
 WIN = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("SNAKE")
-FPS = 8
+FPS = 10
 
 WHITE = (255,255,255)
 RED = (255,0,0)
@@ -18,6 +18,7 @@ TAIL_COLOR = (0, 255, 204)
 PLAYER_VEL = 10
 PLAYER_SIZE = 10
 POINT_SIZE =10
+STARTING_LENGTH = 5
 
 GAME_OVER = pygame.USEREVENT + 1
 GAME_OVER_FONT = pygame.font.SysFont('comicsans', 40)
@@ -106,6 +107,8 @@ def main():
     score = 0
     move = move_right
     tail = []
+    for i in range(STARTING_LENGTH):
+        add_tail_piece(tail,head,move)
     BACKGROUND_SOUND.play(loops=-1,fade_ms=500)
     while run:               
         clock.tick(FPS)
